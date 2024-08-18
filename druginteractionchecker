@@ -1,0 +1,23 @@
+# Sample database of drug interactions
+def check_drug_interaction(drug1, drug2):
+    # Pre-defined list of known drug interactions
+    interactions = {
+        ("aspirin", "ibuprofen"): "Co-administration of aspirin with ibuprofen may increase the risk of gastrointestinal bleeding.",
+        ("warfarin", "aspirin"): "Concurrent use of warfarin and aspirin may increase the risk of bleeding.",
+        # Add more drug interactions as needed
+    }
+    
+    # Check if the pair of drugs is in the interactions dictionary
+    if (drug1, drug2) in interactions:
+        return interactions[(drug1, drug2)]
+    elif (drug2, drug1) in interactions:  # Check both orderings of drugs
+        return interactions[(drug2, drug1)]
+    else:
+        return "No interaction data found between the two entered drugs."
+
+if __name__ == "__main__":
+    drug1 = input("Enter the name of the first drug: ").lower()
+    drug2 = input("Enter the name of the second drug: ").lower()
+    
+    interaction = check_drug_interaction(drug1, drug2)
+    print(interaction)
